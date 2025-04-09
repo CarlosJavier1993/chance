@@ -53,5 +53,3 @@ def generate_boletos():
 def get_boletos():
     db = get_db_connection()
     return list(db.boletos.find())
-
-

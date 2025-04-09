@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados del Juego de Chance</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="video-container">
+        <video autoplay loop muted playsinline id="background-video">
+            <source src="/static/videos/fondo_chance.mp4" type="video/mp4">
+            Tu navegador no soporta reproducción de video.
+        </video>
+    </div>
+    <div class="container content">
+        <h1 class="text-center my-4">Resultados del Juego de Chance</h1>
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-primary mx-2" onclick="obtenerSorteo(2255)">Sorteo 2255</button>
+            <button class="btn btn-primary mx-2" onclick="obtenerSorteo(3748)">Sorteo 3748</button>
+            <button class="btn btn-primary mx-2" onclick="obtenerSorteo(4567)">Sorteo 4567</button>
+        </div>
+        <div id="resultado" class="mt-4 text-center">
+            <h2>Selecciona un sorteo para ver los resultados</h2>
+        </div>
+    </div>
+    <script>
+        async function obtenerSorteo(sorteo) {
+            console.log(`Enviando solicitud para el sorteo ${sorteo}`); // Depuración
+            try {
+                const response = await fetch(`/sorteo/${sorteo}`);
+                console.log("Respuesta del servidor:", response); // Depuración
+    
+                const data = await response.json();
+                console.log("Datos recibidos:", data); // Depuración
+    
+                const resultadoDiv = document.getElementById('resultado');
+                if (data.error) {
+                    resultadoDiv.innerHTML = `<p class="text-danger text-center">${data.error}</p>`;
+                } else {
+                    resultadoDiv.innerHTML = `
+                        <h3 class="text-center">Resultados del Sorteo ${data.sorteo}</h3>
+                        <p><strong>Serie:</strong> ${data.serie}</p>
+                        <p><strong>Premio:</strong> $${data.premio}</p>
+                        <p><strong>Fecha de Emisión:</strong> ${data.fecha_emision}</p>
+                        <p><strong>Valor del Billete:</strong> $${data.valor_billete}</p>
+                        <h4>Boletos Generados:</h4>
+                        <ul>
+                            ${data.boletos.map(boleto => `<li>${boleto}</li>`).join('')}
+                        </ul>
+                        <h4 class="text-success">Número Ganador: ${data.ganador}</h4>
+                    `;
+                }
+            } catch (error) {
+                console.error("Error en la solicitud:", error); // Depuración
+            }
+        }
+    </script>
+</body>
+</html>

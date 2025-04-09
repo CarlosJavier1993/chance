@@ -1,0 +1,157 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: url('/static/videos/fondo_chance.mp4') no-repeat center center fixed;
+    background-size: cover; /* Hace que el video cubra todo el fondo */
+}
+
+@keyframes darkColorShift {
+    0% { background-color: #000000; }
+    25% { background-color: #333333; }
+    50% { background-color: #555555; }
+    75% { background-color: #777777; }
+    100% { background-color: #000000; }
+}
+
+h1 {
+    color: white; /* Texto en blanco */
+    padding: 15px 30px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    text-align: center; /* Centra el texto */
+    animation: darkColorShift 5s infinite; /* Aplica la animación */
+    font-size: 2.5rem; /* Tamaño grande del texto */
+    display: inline-block; /* Ajusta el tamaño del fondo al texto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
+}
+
+h3 {
+        background-color: #2deb8c; /* Color de fondo más claro */
+        color: #2C3E50;           /* Color del texto */
+        padding: 8px 16px;        /* Espaciado interno alrededor del texto */
+        border-radius: 5px;       /* Bordes redondeados */
+        text-align: center;       /* Centrar el texto */
+        display: inline-block;    /* Ajustar el tamaño del fondo al texto */
+        margin: 10px auto;        /* Espaciado entre los subtítulos */
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Sombra para subtítulos */
+    }
+    
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #D5DBDB;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+#resultado {
+    position: relative;
+    background: linear-gradient(135deg, #f2f2f2, #dcdcdc); /* Fondo con gradiente sutil */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: left; /* Alinea el texto a la izquierda */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: black; /* Cambia el color del texto a negro */
+    font-size: 16px; /* Tamaño legible */
+    font-weight: normal;
+}
+
+#resultado ul {
+    list-style-position: inside; /* Hace que los puntos se alineen dentro del contenido */
+    text-align: center;          /* Centra el contenido de los elementos de la lista */
+    padding: 0;    
+    margin: auto;              /* Elimina espacio extra de la lista */
+}
+
+#resultado ul li {
+    display: inline-block;
+    margin: 5px 10px;               /* Espaciado entre los elementos de la lista */
+}
+.video-container {
+    position: fixed;          /* Asegura que el video se quede fijo */
+    border: 2px solid red; /* Borde temporal para depurar */
+    /*top: 0;
+    left: 0;
+    width: 100%;              /* Ocupa todo el ancho */
+    /*height: 100%;             /* Ocupa todo el alto */
+    z-index: -1;              /* Envía el video al fondo */
+    /*overflow: hidden;         /* Oculta cualquier parte del video fuera de los límites */
+}
+#background-video {
+    position: fixed;          /* Hace que el video permanezca como fondo */
+   /* width: 100%;              /* Ocupa todo el ancho */
+    /*height: 100%;             /* Ocupa todo el alto */
+    /*object-fit: cover;        /* Ajusta el video para que cubra todo el fondo */
+    z-index: -1;
+}
+.content {
+    position: relative;       /* Permite que el contenido quede encima */
+    z-index: 1;               /* Asegura que el contenido se posicione encima del video */
+    color: white;             /* Cambia el color del texto para que sea visible sobre el video */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Mejora la legibilidad del texto */
+}
+.container {
+    position: relative;       /* Asegura que el contenido esté en su lugar y sobre el video */
+    z-index: 1;               /* Eleva el contenido por encima del video */
+    color: white;             /* Cambia el color del texto para que sea visible sobre el video */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Mejora la visibilidad del texto */
+    margin: 0 auto;  
+    padding-top: 0; 
+    text-align: center;
+}
+
+#resultado::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(128,128,128,0.15) 0%, transparent 70%);
+    opacity: 0.3; /* Reducir el efecto */
+    filter: blur(6px); /* Desenfoque más sutil */
+    z-index: -1; /* Detrás del contenido */
+}
+
+
+@keyframes smokeAnimation {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-10px, 10px);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+}
+h2 {
+    font-size: 24px;
+    color: #2E86C1;
+    margin: 20px 0;
+}
+#resultado h2 {
+    font-size: 18px;
+    color: #333333; /* Color oscuro pero no negro */
+    font-weight: bold; /* Resaltar el texto */
+    margin: 0; /* Elimina espacios adicionales */
+}
+#resultado h2,
+#resultado p,
+#resultado ul li {
+    color: black; /* Texto negro para títulos, párrafos y listas */
+}
+
+#resultado h4 {
+    color: green; /* Si prefieres mantener el título "Número Ganador" en verde */
+}
